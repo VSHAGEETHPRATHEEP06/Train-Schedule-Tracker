@@ -142,7 +142,11 @@ const ProfileScreen = ({ navigation }) => {
     
     // Check if it's the Notifications feature - if so, navigate to notifications screen
     if (title === getLabel('notifications') || title === 'Notifications') {
-      handleNotificationSettings();
+      navigation.navigate('Notifications', {
+        theme: isDarkMode ? 'dark' : 'light',
+        isDarkMode: isDarkMode,
+        getLabel: getLabel
+      });
       return;
     }
     
@@ -154,7 +158,7 @@ const ProfileScreen = ({ navigation }) => {
   };
 
   const handleNotificationSettings = () => {
-    navigation.navigate('NotificationSettings', {
+    navigation.navigate('Notifications', {
       theme: isDarkMode ? 'dark' : 'light',
       isDarkMode: isDarkMode,
       getLabel: getLabel

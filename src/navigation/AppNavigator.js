@@ -152,7 +152,12 @@ const ProfileStackNavigator = () => {
   }), [theme]);
   
   const notificationSettingsOptions = ({ route, navigation }) => {
-    const { theme, isDarkMode, getLabel } = route.params || {};
+    const { theme, isDarkMode, getLabel: routeGetLabel } = route.params || {};
+    // Create a safe getLabel function that won't throw errors
+    const getLabel = typeof routeGetLabel === 'function' 
+      ? routeGetLabel 
+      : (key, fallback) => fallback;
+    
     return {
       title: getLabel('notificationSettings', 'Notification Settings'),
       headerStyle: {

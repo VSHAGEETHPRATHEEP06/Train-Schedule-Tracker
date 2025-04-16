@@ -6,22 +6,23 @@ import {
   Switch,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SIZES, SPACING } from '../config/theme';
+import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
  * NotificationSettingsScreen Component
  * Allows users to configure their notification preferences
  */
 const NotificationSettingsScreen = ({ navigation, route }) => {
-  // Get theme and language from route params or default values
-  const theme = route?.params?.theme || 'light';
-  const getLabel = route?.params?.getLabel || ((key) => key);
-  
-  const isDarkMode = theme === 'dark';
+  // Use the app's theme context instead of route params
+  const { theme, isDarkMode } = useTheme();
+  const { getLabel } = useLanguage();
   
   const [loading, setLoading] = useState(true);
   const [settings, setSettings] = useState({

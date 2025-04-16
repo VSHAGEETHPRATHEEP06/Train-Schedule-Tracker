@@ -175,7 +175,11 @@ const NotificationsScreen = ({ navigation }) => {
   
   // Navigate to notification settings
   const goToSettings = () => {
-    navigation.navigate('NotificationSettings');
+    navigation.navigate('NotificationSettings', {
+      theme: isDarkMode ? 'dark' : 'light',
+      isDarkMode: isDarkMode,
+      getLabel: getLabel
+    });
   };
   
   return (

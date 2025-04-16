@@ -5,6 +5,7 @@ import { COLORS } from './src/config/theme';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 import { CurrencyProvider } from './src/context/CurrencyContext';
+import NotificationsScreen from './src/screens/NotificationsScreen';
 
 // Ignore specific harmless warnings
 LogBox.ignoreLogs([
